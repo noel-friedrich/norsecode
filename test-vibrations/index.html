@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="de">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Vibrationen-Test</title>
+    </head>
+
+    <body>
+
+        <h1>Vibrationen-Test</h1>
+
+        <fieldset>
+            <legend>Optionen</legend>
+
+            <label for="complexity">Komplexität:</label>
+            <input id="complexity-inp" name="complexity" type="number" value="2"><br>
+
+            <label for="min-freq">Minimale Länge (ms):</label>
+            <input id="min-freq-inp" name="min-freq" type="number" value="100"><br>
+
+            <label for="max-freq">Maximale Länge (ms):</label>
+            <input id="max-freq-inp" name="max-freq" type="number" value="1000"><br>
+
+            <label for="pause-length">Pause (ms):</label>
+            <input id="pause-length-inp" name="pause-length" type="number" value="1000"><br>
+
+        </fieldset>
+        <br>
+        <button onclick="window.navigator.vibrate(1000)">Testvibration</button>
+        <button id="start-test-btn">Test starten</button><br>
+
+        <br>
+        <div id="buttons-container"></div>
+
+        <pre id="log"></pre>
+
+        <script>
+
+            let src = "main.js?t=" + Date.now()
+            let script = document.createElement("script")
+            script.setAttribute("src", src)
+
+            script.onload = function() {
+                console.log("Loaded main.js File")
+            }
+
+            document.body.appendChild(script)
+
+        </script>
+        
+    </body>
+
+</html>

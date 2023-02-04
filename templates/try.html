@@ -1,0 +1,32 @@
+~START-CONFIG~
+destination: try/index.html
+site-name: NorseCode Ausprobieren
+~END-CONFIG~
+
+<!DOCTYPE html>
+<html>
+
+$head.html$
+
+<body>
+
+$header.html$
+
+    <div class="huge-input-container">
+        <input id="huge-input" type="text" placeholder="text" autofocus>
+    </div>
+
+    <canvas id="visualization"></canvas>
+
+$footer.html$
+
+    <script src="$path-to-ground$js/main.js"></script>
+    <script>
+        _loadScript("$path-to-ground$js/encoder.js", true)
+        _loadScript("$path-to-ground$js/index.js", true)
+        _loadScript("$path-to-ground$js/norse.js", true)
+    </script>
+
+</body>
+
+</html>

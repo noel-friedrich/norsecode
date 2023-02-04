@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>NorseCode Training</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="icon" type="image/x-icon" href="../res/img/logo.svg">
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Quicksand">
+    </head>
+
+
+<body>
+
+    <header>
+        <a class="logo" href="https://noel-friedrich.de/norse/">
+            <img src="https://noel-friedrich.de/norse/res/img/logo.svg" alt="NorseCode Logo">
+            <h1><b>Norse</b>Code</h1>
+        </a>
+
+        <nav>
+            <a href="https://noel-friedrich.de/norse/">Home</a>
+            <a href="https://noel-friedrich.de/norse/try/">Ausprobieren</a>
+            <a href="https://noel-friedrich.de/norse/training/">Training</a>
+        </nav>
+    </header>
+
+
+    <article>
+        <h1>Code: <b id="code-output"></b></h1>
+        <div id="pre-training-section">
+            <p>
+                Willkommen beim NorseCode Training. Hier kannst du in Verbindung mit der App
+                die ausgewählte Text-Beanchrichtigungs-Kodierung üben.
+                <br><br><b>Starte das Training, indem du den Code in der App eingibst.</b>
+                <br><br>Sobald du den Code in der
+                App eingegeben hast, kannst du das Handy in die Hosentasche stecken und auf
+                "Start" klicken. Dann werden dir Live die Wörter und dazugehörigen
+                Vibrationen angezeigt, damit du Live-Feedback bekommst.
+            </p>
+            <p>
+                Wähle die Kodierung, die du üben möchtest. Wenn du die App nicht
+                installiert hast, kannst du die Android App
+                <a href="https://noel-friedrich.de/uploads/norsecode.apk">hier</a> als <code>.apk</code>-Datei herunterladen.
+            </p>
+            <label for="code-select">Kodierung:</label>
+            <select id="code-selection">
+                <option value="norsetable">NorseTable (Standard)</option>
+                <option value="norsecompress">NorseCompress</option>
+            </select>
+            <button id="start-training">Training Starten</button>
+        </div>
+        <div id="active-training-section" style="display: none">
+            <h1 class="training-word" id="curr-word"></h1>
+            <p></p>
+            <button id="stop-training" style="width: fit-content; margin: 0 auto;">Training Beenden</button>
+        </div>
+    </article>
+
+    <footer>
+        NorseCode Training; 
+        Erstellt von 
+        <a href="https://noel-friedrich.de/" target="_blank">Noel Friedrich</a>
+        <a href="https://noel-friedrich.de/blobber/legal/data-policy">Datenschutz</a>
+        <a href="https://noel-friedrich.de/blobber/legal/impressum">Impressum</a>
+        <a href="https://noel-friedrich.de/norse/contact" target="_blank">Kontakt</a>
+        <a href="https://noel-friedrich.de/norse/help" target="_blank">Hilfe</a>
+    </footer>
+
+
+    <script src="../js/main.js"></script>
+    <script src="../js/norse.js"></script>
+    <script src="../js/load-words.js"></script>
+    <script src="../js/mersenne.js"></script>
+    <script src="../js/training.js"></script>
+
+</body>
+
+</html>
