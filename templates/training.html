@@ -1,0 +1,56 @@
+~START-CONFIG~
+destination: training/index.html
+site-name: NorseCode Training
+~END-CONFIG~
+
+<!DOCTYPE html>
+<html>
+
+$head.html$
+
+<body>
+
+$header.html$
+
+    <article>
+        <h1>Code: <b id="code-output"></b></h1>
+        <div id="pre-training-section">
+            <p>
+                Willkommen beim NorseCode Training. Hier kannst du in Verbindung mit der App
+                die ausgewählte Text-Beanchrichtigungs-Kodierung üben.
+                <br><br><b>Starte das Training, indem du den Code in der App eingibst.</b>
+                <br><br>Sobald du den Code in der
+                App eingegeben hast, kannst du das Handy in die Hosentasche stecken und auf
+                "Start" klicken. Dann werden dir Live die Wörter und dazugehörigen
+                Vibrationen angezeigt, damit du Live-Feedback bekommst.
+            </p>
+            <p>
+                Wähle die Kodierung, die du üben möchtest. Wenn du die App nicht
+                installiert hast, kannst du die Android App
+                <a href="https://noel-friedrich.de/uploads/norsecode.apk">hier</a> als <code>.apk</code>-Datei herunterladen.
+            </p>
+            <label for="code-select">Kodierung:</label>
+            <select id="code-selection">
+                <option value="norsetable">NorseTable (Standard)</option>
+                <option value="norsecompress">NorseCompress</option>
+            </select>
+            <button id="start-training">Training Starten</button>
+        </div>
+        <div id="active-training-section" style="display: none">
+            <h1 class="training-word" id="curr-word"></h1>
+            <p></p>
+            <button id="stop-training" style="width: fit-content; margin: 0 auto;">Training Beenden</button>
+        </div>
+    </article>
+
+$footer.html$
+
+    <script src="$path-to-ground$js/main.js"></script>
+    <script src="$path-to-ground$js/norse.js"></script>
+    <script src="$path-to-ground$js/load-words.js"></script>
+    <script src="$path-to-ground$js/mersenne.js"></script>
+    <script src="$path-to-ground$js/training.js"></script>
+
+</body>
+
+</html>

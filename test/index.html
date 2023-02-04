@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>NorseCode Testing</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="icon" type="image/x-icon" href="../res/img/logo.svg">
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Quicksand">
+    </head>
+
+
+<body>
+
+    <header>
+        <a class="logo" href="https://noel-friedrich.de/norse/">
+            <img src="https://noel-friedrich.de/norse/res/img/logo.svg" alt="NorseCode Logo">
+            <h1><b>Norse</b>Code</h1>
+        </a>
+
+        <nav>
+            <a href="https://noel-friedrich.de/norse/">Home</a>
+            <a href="https://noel-friedrich.de/norse/try/">Ausprobieren</a>
+            <a href="https://noel-friedrich.de/norse/training/">Training</a>
+        </nav>
+    </header>
+
+
+    <div class="test-button-panel">
+        <button onclick="vibrate(0)">0ms</button>
+        <button onclick="vibrate(10)">10ms</button>
+        <button onclick="vibrate(100)">100ms</button>
+        <button onclick="vibrate(1000)">1000ms</button>
+        <button onclick="vibrate(arrRepeat([10,5], 500))">[10,5]</button>
+        <button onclick="vibrate(arrRepeat([10,0], 500))">[10,0]</button>
+        <button onclick="vibrate(arrRepeat([10,10], 500))">[10,10]</button>
+        <button onclick="vibrate(arrRepeat([20,0], 500))">[20,0]</button>
+        <button onclick="vibrate(arrRepeat([20,10], 500))">[20,10]</button>
+        <button onclick="vibrate(arrRepeat([30,10], 500))">[30,10]</button>
+        <button onclick="vibrate(arrRepeat([40,10], 500))">[40,10]</button>
+        <button onclick="vibrate(arrRepeat([50,10], 500))">[50,10]</button>
+        <button onclick="vibrate(arrRepeat([100,10], 500))">[100,10]</button>
+        <button onclick="vibrate(arrRepeat([150,10], 500))">[150,10]</button>
+        <button onclick="vibrate(arrRepeat([200,10], 500))">[200,10]</button>
+        <button onclick="vibrate(arrRepeat([300,10], 500))">[300,10]</button>
+        <button onclick="vibrate(arrRepeat([100,0], 500))">[100,0]</button>
+        <button onclick="vibrate(arrRepeat([150,0], 500))">[150,0]</button>
+        <button onclick="vibrate(arrRepeat([200,0], 500))">[200,0]</button>
+        <button onclick="vibrate(arrRepeat([300,0], 500))">[300,0]</button>
+        <button onclick="vibrate(arrRepeat([100,5], 500))">[100,5]</button>
+        <button onclick="vibrate(arrRepeat([150,5], 500))">[150,5]</button>
+        <button onclick="vibrate(arrRepeat([200,5], 500))">[200,5]</button>
+        <button onclick="vibrate(arrRepeat([300,5], 500))">[300,5]</button>
+        <button onclick="norseEncode('hallo').vibrate()">'hallo'</button>
+        <div>
+            <input id="vibrate-pattern" type="text" value="[100,0]">
+            <input id="vibrate-repeats" type="number" value="1" min="0">
+            <button onclick="vibrate(arrRepeat(JSON.parse(document.getElementById('vibrate-pattern').value), document.getElementById('vibrate-repeats').value))">Custom</button>
+        </div>
+    </div>
+
+    <footer>
+        NorseCode Testing; 
+        Erstellt von 
+        <a href="https://noel-friedrich.de/" target="_blank">Noel Friedrich</a>
+        <a href="https://noel-friedrich.de/blobber/legal/data-policy">Datenschutz</a>
+        <a href="https://noel-friedrich.de/blobber/legal/impressum">Impressum</a>
+        <a href="https://noel-friedrich.de/norse/contact" target="_blank">Kontakt</a>
+        <a href="https://noel-friedrich.de/norse/help" target="_blank">Hilfe</a>
+    </footer>
+
+
+    <script src="../js/main.js"></script>
+    <script>_loadScript("../js/encoder.js", true)</script>
+
+</body>
+
+</html>

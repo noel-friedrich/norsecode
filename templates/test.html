@@ -1,0 +1,55 @@
+~START-CONFIG~
+destination: test/index.html
+site-name: NorseCode Testing
+~END-CONFIG~
+
+<!DOCTYPE html>
+<html>
+
+$head.html$
+
+<body>
+
+$header.html$
+
+    <div class="test-button-panel">
+        <button onclick="vibrate(0)">0ms</button>
+        <button onclick="vibrate(10)">10ms</button>
+        <button onclick="vibrate(100)">100ms</button>
+        <button onclick="vibrate(1000)">1000ms</button>
+        <button onclick="vibrate(arrRepeat([10,5], 500))">[10,5]</button>
+        <button onclick="vibrate(arrRepeat([10,0], 500))">[10,0]</button>
+        <button onclick="vibrate(arrRepeat([10,10], 500))">[10,10]</button>
+        <button onclick="vibrate(arrRepeat([20,0], 500))">[20,0]</button>
+        <button onclick="vibrate(arrRepeat([20,10], 500))">[20,10]</button>
+        <button onclick="vibrate(arrRepeat([30,10], 500))">[30,10]</button>
+        <button onclick="vibrate(arrRepeat([40,10], 500))">[40,10]</button>
+        <button onclick="vibrate(arrRepeat([50,10], 500))">[50,10]</button>
+        <button onclick="vibrate(arrRepeat([100,10], 500))">[100,10]</button>
+        <button onclick="vibrate(arrRepeat([150,10], 500))">[150,10]</button>
+        <button onclick="vibrate(arrRepeat([200,10], 500))">[200,10]</button>
+        <button onclick="vibrate(arrRepeat([300,10], 500))">[300,10]</button>
+        <button onclick="vibrate(arrRepeat([100,0], 500))">[100,0]</button>
+        <button onclick="vibrate(arrRepeat([150,0], 500))">[150,0]</button>
+        <button onclick="vibrate(arrRepeat([200,0], 500))">[200,0]</button>
+        <button onclick="vibrate(arrRepeat([300,0], 500))">[300,0]</button>
+        <button onclick="vibrate(arrRepeat([100,5], 500))">[100,5]</button>
+        <button onclick="vibrate(arrRepeat([150,5], 500))">[150,5]</button>
+        <button onclick="vibrate(arrRepeat([200,5], 500))">[200,5]</button>
+        <button onclick="vibrate(arrRepeat([300,5], 500))">[300,5]</button>
+        <button onclick="norseEncode('hallo').vibrate()">'hallo'</button>
+        <div>
+            <input id="vibrate-pattern" type="text" value="[100,0]">
+            <input id="vibrate-repeats" type="number" value="1" min="0">
+            <button onclick="vibrate(arrRepeat(JSON.parse(document.getElementById('vibrate-pattern').value), document.getElementById('vibrate-repeats').value))">Custom</button>
+        </div>
+    </div>
+
+$footer.html$
+
+    <script src="../js/main.js"></script>
+    <script>_loadScript("../js/encoder.js", true)</script>
+
+</body>
+
+</html>
