@@ -391,6 +391,14 @@ article a:hover {
     border-radius: 5px;
 }
 
+.studio-sidebar input[type=number] {
+    font-family: monospace;
+}
+
+.studio-sidebar input:not([type=range]).invalid {
+    background-color: #ffcccc;
+}
+
 .studio-sidebar input[type=range] {
     width: 100%;
 }

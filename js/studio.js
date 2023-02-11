@@ -478,6 +478,11 @@ class SidebarContent {
             ELEMENTS.tablePauseWordInput.value = tableConfig.pauseWord
             ELEMENTS.tableShortPulseInput.value = tableConfig.short
             ELEMENTS.tableLongPulseInput.value = tableConfig.long
+
+            ELEMENTS.tablePauseLetterInput.classList.remove("invalid")
+            ELEMENTS.tablePauseWordInput.classList.remove("invalid")
+            ELEMENTS.tableShortPulseInput.classList.remove("invalid")
+            ELEMENTS.tableLongPulseInput.classList.remove("invalid")
         },
 
         compress: () => {
@@ -485,6 +490,10 @@ class SidebarContent {
             ELEMENTS.compressShortPulseInput.value = compressConfig.short
             ELEMENTS.compressPauseMsInput.value = compressConfig.pause
             ELEMENTS.compressNorseCheckbox.checked = compressConfig.norse
+
+            ELEMENTS.compressLongPulseInput.classList.remove("invalid")
+            ELEMENTS.compressShortPulseInput.classList.remove("invalid")
+            ELEMENTS.compressPauseMsInput.classList.remove("invalid")
         }
 
     }
@@ -549,31 +558,40 @@ function encode() {
 }
 
 function addInputListeners() {
-    ELEMENTS.compressLongPulseInput.addEventListener("input", () => {
-        compressConfig.long = parseInt(ELEMENTS.compressLongPulseInput.value)
-    })
-    ELEMENTS.compressShortPulseInput.addEventListener("input", () => {
-        compressConfig.short = parseInt(ELEMENTS.compressShortPulseInput.value)
-    })
-    ELEMENTS.compressPauseMsInput.addEventListener("input", () => {
-        compressConfig.pause = parseInt(ELEMENTS.compressPauseMsInput.value)
-    })
-    ELEMENTS.compressNorseCheckbox.addEventListener("change", () => {
-        compressConfig.norse = ELEMENTS.compressNorseCheckbox.checked
-    })
+    function addNumberListener(input, obj, propertyName) {
+        function isValidValue(value) {
+            let min = input.min ?? -Infinity
+            let max = input.max ?? Infinity
 
-    ELEMENTS.tablePauseLetterInput.addEventListener("input", () => {
-        tableConfig.pauseLetter = parseInt(ELEMENTS.tablePauseLetterInput.value)
-    })
-    ELEMENTS.tablePauseWordInput.addEventListener("input", () => {
-        tableConfig.pauseWord = parseInt(ELEMENTS.tablePauseWordInput.value)
-    })
-    ELEMENTS.tableShortPulseInput.addEventListener("input", () => {
-        tableConfig.short = parseInt(ELEMENTS.tableShortPulseInput.value)
-    })
-    ELEMENTS.tableLongPulseInput.addEventListener("input", () => {
-        tableConfig.long = parseInt(ELEMENTS.tableLongPulseInput.value)
-    })
+            if (min >= 0) {
+                if (!/^[0-9]+(?:\.[0-9]+)?$/.test(value))
+                    return false
+            } else {
+                if (!/^-?[0-9]+(?:\.[0-9]+)?$/.test(value))
+                    return false
+            }
+
+            value = parseFloat(value)
+            return value >= min && value <= max
+        }
+
+        input.addEventListener("input", () => {
+            if (isValidValue(input.value)) {
+                input.classList.remove("invalid")
+                obj[propertyName] = parseFloat(input.value)
+            } else {
+                input.classList.add("invalid")
+            }
+        })
+    }
+
+    addNumberListener(ELEMENTS.compressLongPulseInput, compressConfig, "long")
+    addNumberListener(ELEMENTS.compressShortPulseInput, compressConfig, "short")
+    addNumberListener(ELEMENTS.compressPauseMsInput, compressConfig, "pause")
+    addNumberListener(ELEMENTS.tablePauseLetterInput, tableConfig, "pauseLetter")
+    addNumberListener(ELEMENTS.tablePauseWordInput, tableConfig, "pauseWord")
+    addNumberListener(ELEMENTS.tableShortPulseInput, tableConfig, "short")
+    addNumberListener(ELEMENTS.tableLongPulseInput, tableConfig, "long")
 }
 
 function main() {
