@@ -39,6 +39,17 @@ class Bits {
         return this.data.join('')
     }
 
+    toPattern({shortPulse=20, longPulse=200}={}) {
+        let pattern = []
+        for (let i = 0; i < this.length; i++) {
+            if (this.get(i) === 0)
+                pattern.push(...[shortPulse, longPulse])
+            else
+                pattern.push(...[longPulse, shortPulse])
+        }
+        return pattern
+    }
+
     get pattern() {
         let pattern = []
         for (let i = 0; i < this.length; i++) {
@@ -105,33 +116,38 @@ function norse(bits) {
     return newBits
 }
 
-function generatePattern(str, {pauseMs=1000}={}) {
+function generatePattern(str, {pauseMs=1000, shortPulse=20, longPulse=200, norse=true}={}) {
     let words = str.split(" ")
     let pattern = []
     for (let i = 0; i < words.length; i++) {
-        let bits = Bits.fromString(words[i]).norse()
-        pattern.push(...bits.pattern)
+        let bits = Bits.fromString(words[i])
+        if (norse) bits = bits.norse()
+        pattern.push(...bits.toPattern({shortPulse, longPulse}))
         if (i !== words.length - 1)
             pattern.push(...[0, pauseMs])
     }
     return pattern
 }
 
-function norseTable(string) {
-    const translationTable = {
-        "a": "01", "b": "0001", "c": "100", "d": "010",
-        "e": "0", "f": "0100", "g": "0000", "h": "110",
-        "i": "00", "j": "1000", "k": "0011", "l": "101",
-        "m": "111", "n": "1", "o": "000", "p": "0101",
-        "q": "1011", "r": "001", "s": "10", "t": "11",
-        "u": "011", "v": "0111", "w": "0010", "x": "1010",
-        "y": "1001", "z": "0110"
-    }
+function norseCompress(string, opts) {
+    return generatePattern(string, opts)
+}
 
-    const morse1 = [300, 100]
-    const morse0 = [100, 300]
-    const pause = [0, 500]
-    const wordPause = [0, 1000]
+const norseTableTranslationTable = {
+    "a": "01", "b": "0001", "c": "100", "d": "010",
+    "e": "0", "f": "0100", "g": "0000", "h": "110",
+    "i": "00", "j": "1000", "k": "0011", "l": "101",
+    "m": "111", "n": "1", "o": "000", "p": "0101",
+    "q": "1011", "r": "001", "s": "10", "t": "11",
+    "u": "011", "v": "0111", "w": "0010", "x": "1010",
+    "y": "1001", "z": "0110"
+}
+
+function norseTable(string, {translationTable=norseTableTranslationTable, letterPause=500, shortPulse=100, longPulse=300, wordPause=1000}={}) {
+    const morse1 = [longPulse, shortPulse]
+    const morse0 = [shortPulse, longPulse]
+    const pause = [0, letterPause]
+    wordPause = [0, wordPause]
 
     let pattern = []
 

@@ -1,0 +1,103 @@
+~START-CONFIG~
+destination: studio/index.html
+site-name: NorseCode Studio
+~END-CONFIG~
+
+<!DOCTYPE html>
+<html>
+
+$head.html$
+
+<body>
+
+$header.html$
+
+    <div class="studio-container">
+        <div class="studio-sidebar" id="studio_sidebar">
+            <input type="text" class="studio-sidebar-input" placeholder="Text" id="text_input" value="Hallo Welt">
+            <div class="studio-sidebar-switch" data-key="encoding">
+                <button class="studio-sidebar-switch-button chosen" data-value="table">
+                    <span>Table</span>
+                </button>
+                <button class="studio-sidebar-switch-button" data-value="compress">
+                    <span>Compress</span>
+                </button>
+            </div>
+            <button class="studio-sidebar-button" id="encode_button">Kodieren</button>
+            <div class="studio-sidebar-content invisible" data-name="table">
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Zeichen</th>
+                            <th>Code</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="table_tbody">
+
+                    </tbody>
+
+                </table>
+                <div class="input-container">
+                    <label>Pause in Milisekunden<br>(zwischen Buchstaben)</label>
+                    <input type="number" class="studio-sidebar-input" placeholder="ms" id="table_pause_letter_input" value="500" min="0" max="10000" step="100">
+                </div>
+                <div class="input-container">
+                    <label>Pause in Milisekunden<br>(zwischen Wörtern)</label>
+                    <input type="number" class="studio-sidebar-input" placeholder="ms" id="table_pause_word_input" value="1000" min="0" max="10000" step="100">
+                </div>
+                <div class="input-container">
+                    <label>Kurzer Puls in Milisekunden</label>
+                    <input type="number" class="studio-sidebar-input" placeholder="ms" id="table_short_pulse_input" value="100" min="0" max="10000" step="50">
+                </div>
+                <div class="input-container">
+                    <label>Langer Puls in Milisekunden</label>
+                    <input type="number" class="studio-sidebar-input" placeholder="ms" id="table_long_pulse_input" value="300" min="0" max="10000" step="50">
+                </div>
+            </div>
+            <div class="studio-sidebar-content invisible" data-name="compress">
+                <div class="input-container">
+                    <label>Pause in Milisekunden<br>(zwischen Wörtern)</label>
+                    <input type="number" class="studio-sidebar-input" placeholder="ms" id="compress_pause_ms_input" value="1000" min="0" max="10000" step="100">
+                </div>
+                <div class="input-container">
+                    <label>Kurzer Puls in Milisekunden</label>
+                    <input type="number" class="studio-sidebar-input" placeholder="ms" id="compress_short_pulse_input" value="20" min="0" max="10000" step="2">
+                </div>
+                <div class="input-container">
+                    <label>Langer Puls in Milisekunden</label>
+                    <input type="number" class="studio-sidebar-input" placeholder="ms" id="compress_long_pulse_input" value="200" min="0" max="10000" step="10">
+                </div>
+                <div class="checkbox-container">
+                    <input type="checkbox" id="compress_norse_checkbox" checked>
+                    <label for="compress_norse_checkbox">Norsefunktion benutzen, um Daten zu komprimieren</label>
+                </div>
+            </div>
+        </div>
+        <div class="studio-content">
+            <canvas id="studio_canvas"></canvas>
+        </div>
+        <div class="studio-sidebar" id="control_bar">
+            <button class="studio-sidebar-button" id="play_button">Abspielen</button>
+            <button class="studio-sidebar-button" id="stop_button">Pausieren</button>
+            <button class="studio-sidebar-button" id="reset_button">Zurücksetzen</button>
+            <button class="studio-sidebar-button" id="vibrate_button">Vibrieren</button>
+            <p>
+                <i>Das Vibrieren ist nur auf Geräten mit Vibrationsmotor möglich</i>
+            </p>
+            <div class="slider-container" data-key="xScale">
+                <input type="range" min="1" max="20" value="3" class="slider">
+                <div class="slider-label"></div>
+            </div>
+        </div>
+    </div>
+
+$footer.html$
+
+<script src="$path-to-ground$js/norse.js"></script>
+<script src="$path-to-ground$js/studio.js"></script>
+
+</body>
+
+</html>

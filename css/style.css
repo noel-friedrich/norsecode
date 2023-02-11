@@ -326,3 +326,215 @@ article a:hover {
 
     background-color: var(--color-primary);
 }
+
+.studio-container {
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+    padding-top: 10px;
+    display: grid;
+
+    --sidebar-width: 300px;
+    --sidebar-color: #eaeaea;
+    --border-color: #ccc;
+
+    grid-template-columns: var(--sidebar-width) 1fr var(--sidebar-width);
+
+    font-family: var(--text-font);
+}
+
+.studio-sidebar {
+    padding: 20px;
+    background-color: var(--sidebar-color);
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+    z-index: 99;
+    overflow: auto;
+}
+
+.studio-sidebar > *,
+.studio-sidebar > .studio-sidebar-content > * {
+    margin-bottom: .5rem;
+}
+
+.studio-sidebar p {
+    text-align: center;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-bottom: .5rem;
+}
+
+.table-code-input {
+    font-size: 1rem;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 10px !important;
+    font-family: monospace !important;
+    background-color: transparent !important;
+}
+
+.table-code-input.invalid {
+    background-color: #ffcccc !important;
+}
+
+.table-code-cell {
+    padding: 0 !important;
+}
+
+.studio-sidebar input:not([type=range]) {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.2rem;
+    font-family: var(--text-font);
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    color: var(--text-color);
+    border-radius: 5px;
+}
+
+.studio-sidebar input[type=range] {
+    width: 100%;
+}
+
+.studio-sidebar button {
+    width: 100%;
+    padding: 10px;
+    font-size: 1.2rem;
+    font-family: var(--header-font);
+    border: none;
+    border-radius: 5px;
+    background-color: white;
+    border: 2px solid var(--border-color);
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+.studio-sidebar .slider-container {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.2rem;
+    font-family: var(--text-font);
+    border: 2px solid var(--border-color);
+    border-radius: 5px;
+    color: var(--text-color);
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    background-color: white;
+}
+
+.studio-sidebar .slider-container > .slider-label {
+    font-size: 1rem;
+    text-align: center;
+}
+
+.studio-sidebar > button:hover {
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+}
+
+.studio-sidebar .input-container {
+    padding: 10px;
+    background-color: white;
+    border: 2px solid var(--border-color);
+    border-radius: 5px;
+}
+
+.studio-sidebar .input-container > label {
+    margin-bottom: .5rem;
+    display: block;
+}
+
+.studio-sidebar .checkbox-container {
+    padding: 20px;
+    background-color: white;
+    border: 2px solid var(--border-color);
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: 2rem 3fr;
+    gap: 20px;
+}
+
+.studio-sidebar .checkbox-container input[type=checkbox] {
+    width: 2rem;
+    transform: scale(1);
+}
+
+.studio-sidebar table {
+    width: 100%;
+    border-collapse: collapse;
+    --border-radius: 5px;
+}
+
+.studio-sidebar table th,
+.studio-sidebar table td {
+    padding: 10px;
+    border: 2px solid var(--border-color);
+}
+
+.studio-sidebar table th {
+    font-family: var(--header-font);
+}
+
+.studio-sidebar table td {
+    font-family: var(--text-font);
+}
+
+.studio-sidebar table tr:nth-child(even) {
+    background-color: #f5f5f5;
+}
+
+.studio-sidebar table tr:nth-child(odd) {
+    background-color: #fafafa;
+}
+
+.studio-sidebar table > thead > tr > th {
+    background-color: white;
+}
+
+.studio-sidebar table td {
+    border-radius: var(--border-radius);
+}
+
+.studio-content {
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+    overflow-y: hidden;
+    position: relative;
+    padding: 10px;
+}
+
+.studio-content > canvas {
+    height: 100%;
+    width: 100%;
+}
+
+.studio-sidebar-switch {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+}
+
+.studio-sidebar-switch-button {
+    border-radius: 5px;
+    padding: 10px;
+    border: 2px solid var(--border-color);
+    font-family: var(--header-font);
+    text-align: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.studio-sidebar-switch-button:not(.chosen):hover,
+.studio-sidebar-switch-button:not(.chosen):focus {
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+}
+
+.studio-sidebar-switch-button.chosen {
+    background-color: white;
+    cursor: default;
+}
+
+.studio-sidebar-switch-button:not(.chosen) {
+    background-color: transparent;
+}
+
+.invisible {
+    display: none;
+}
