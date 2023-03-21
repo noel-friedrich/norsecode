@@ -143,7 +143,13 @@ const norseTableTranslationTable = {
     "y": "1001", "z": "0110"
 }
 
-function norseTable(string, {translationTable=norseTableTranslationTable, letterPause=500, shortPulse=100, longPulse=300, wordPause=1000}={}) {
+function norseTable(string, {
+    translationTable=norseTableTranslationTable,
+    letterPause=500,
+    shortPulse=100,
+    longPulse=300,
+    wordPause=1000
+}={}) {
     const morse1 = [longPulse, shortPulse]
     const morse0 = [shortPulse, longPulse]
     const pause = [0, letterPause]
@@ -160,8 +166,8 @@ function norseTable(string, {translationTable=norseTableTranslationTable, letter
                 } else {
                     pattern.push(...morse0)
                 }
-                pattern.push(...pause)
             }
+            pattern.push(...pause)
         } else if (char === " ") {
             pattern.push(...wordPause)
         }

@@ -386,7 +386,7 @@ class SliderManager {
             container,
             input,
             label,
-            update
+            update 
         }
         update()
     }
