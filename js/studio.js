@@ -48,7 +48,7 @@ class PatternSpeaker {
     constructor(pattern) {
         this.pattern = pattern
         this.stopSignal = false
-        this.beepFrequency = 400
+        this.beepFrequency = 700
     }
 
     play() {
